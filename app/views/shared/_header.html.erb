@@ -1,0 +1,14 @@
+<nav class="bg-gray-800 p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <div class="text-white text-lg font-semibold">Alexandria</div>
+    <div class="space-x-4">
+    <% if current_user.present? %>
+      <form method="DELETE" action="/users/sign_out">
+        <button type="submit" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign Out</button>
+      </form>
+    <% else %>
+      <a href="/users/sign_in" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign In</a>
+    <% end %>
+    </div>
+  </div>
+</nav>
