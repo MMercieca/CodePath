@@ -46,30 +46,31 @@ Beyond that, some prioritized features are:
 
 ## Plan
 
-* Hour 1 - *DONE*
+* Hour 1 - **DONE**
   * Document the plan
   * Document requirements
   * Document questions
   * Create a database schema
-* Hour 2 *DONE*
+* Hour 2 **DONE**
   * Install Devise
   * ~~Create other models from schema~~ We'll do this as needed
   * ~~First deploy to Heroku~~ Waiting on Heroku to fix their outage
   * Install ActiveAdmin
     * Get ActiveAdmin working with users
-* Hour 3
+* Hour 3 **DONE**
   * This was taken up with Hour 2 stuff.
-* Hour 4
+* Hour 4 **DONE**
   * Admin interface for making teachers and other admins
   * Teachers can create a class
 * Hour 5
-  * Specs for what makes sense
+  * First style pass
+* **End of day 1**
 * Hour 6
-  * Teachers can upload files
-  * First pass at making things pretty
+  * Teachers can upload markdown
+  * Markdown displays as HTML
 * Hour 7
-  * Admin interface
-    * File deletion
+  * LectureController specs
+  * Teachers can upload supporting files
 * Hour 8
   * Content moderation
 * Hour 9
@@ -88,6 +89,13 @@ I did not allocate any time for specs.  That's a real bummer.  But the app also 
 
 Fortunately, I have some hours at the end which are unallocated.  So I'll update the plan with what is done and rework what's remaining.
 
+### Update 3
+
+Heroku is still investigating their DNS issue.  I expect they'll have it fixed tomorrow.  It's both annoying and increadably funny that they're having an issue with creating new apps _today_ and _today_ was the day I set aside for starting this project.
+
+I have user management working through ActiveAdmin. I'm thinking that will also be a back door for admins to manage teachers' lectures.  When we get to that.
+
+There's still not a ton that makes sense to spec out, which makes the timeline look a bit iffy. I'll finish out today doing a style pass.
 
 ## Development Setup
 
