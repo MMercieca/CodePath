@@ -46,33 +46,47 @@ Beyond that, some prioritized features are:
 
 ## Plan
 
-* Hour 1
+* Hour 1 - *DONE*
   * Document the plan
   * Document requirements
   * Document questions
   * Create a database schema
-* Hour 2
+* Hour 2 *DONE*
   * Install Devise
-  * Create other models from schema
-  * First deploy to Heroku
+  * ~~Create other models from schema~~ We'll do this as needed
+  * ~~First deploy to Heroku~~ Waiting on Heroku to fix their outage
   * Install ActiveAdmin
     * Get ActiveAdmin working with users
 * Hour 3
-  * Get uploads working
+  * This was taken up with Hour 2 stuff.
 * Hour 4
-  * First pass at making things pretty
+  * Admin interface for making teachers and other admins
+  * Teachers can create a class
 * Hour 5
-  * Invite a class list
+  * Specs for what makes sense
 * Hour 6
-  * Admin interface
-    * User management
-    * File deletion
+  * Teachers can upload files
+  * First pass at making things pretty
 * Hour 7
-  * Content moderation
+  * Admin interface
+    * File deletion
 * Hour 8
+  * Content moderation
 * Hour 9
 * Hour 10
   * Cleanup whatever I can
+
+### Update 1
+
+Sign up/sign in/and sign out work. It was impossible to use without basic navigation so I had to add that in and move it up.  But now the styles are bugging me.  I don't want to spend too long on those but I'll have to do some basic work on that before going much further.
+
+### Update 2
+
+Well, I lied. Instead I got ActiveAdmin working for only admins. I don't seed users yet.  I don't think I want to but I'm not sure what that would make the development experience like.  So I'll punt on that for a bit while I think.
+
+I did not allocate any time for specs.  That's a real bummer.  But the app also needs to do stuff for specs to be worth while.
+
+Fortunately, I have some hours at the end which are unallocated.  So I'll update the plan with what is done and rework what's remaining.
 
 
 ## Development Setup
