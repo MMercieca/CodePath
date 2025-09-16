@@ -96,7 +96,7 @@ make install_development
 
 I'll deploy to Heroku.
 
-A number of free services were recommended, but I'm not familiar with any of them.  With a Postgres database, Heroku is $10/month and I already have the tools installed to use it. At $100/hour, $10 is six minutes.  I'm going to bet it would take a lot longer than six minutes to set up a free service and it would require some debugging.  Time is my most valuable resource here so I'll opt for using what I know.
+A number of free services were recommended, but I'm not familiar with any of them.  With a Postgres database, Heroku is $10/month--- really it's $5/month since I'm already using a database there. I already have the tools installed to use it. At $100/hour, $5 is three minutes.  I'm going to bet it would take a lot longer than three minutes to set up a free service and it would require some debugging.  Time is my most valuable resource here so I'll opt for using what I know.
 
 To deploy:
 
