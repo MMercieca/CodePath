@@ -2,6 +2,12 @@
 
 ## Intro
 
+Some of my philosophy: 
+
+1. Get it working, then make it pretty.
+
+2. Get Feedback early
+
 I've invited you to this repository before it is finished.  I believe in opening pull requests at the beginning of a feature build so feedback can be gathered as soon as possible.  For one thing, feedback is easier to take the earlier in development a feature or project is in.  For another, getting feedback at the end which requires a major change is always a bummer. I open PRs as soon as I can to encourage the former and avoid the latter as much as possible.
 
 ## Requirements

@@ -1,23 +1,51 @@
-<!DOCTYPE html>
-<html>
+<!doctype html><html lang="en">
   <head>
-    <title><%= content_for(:title) || "Code Path" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Alexandria - CodePath's Section">
+    <meta name="author" content="Matt Mercieca">
+    <meta name="robots" content="index,follow">
+    <meta property="og:site_name" content="Alexandria - CodePath's Section">
+    <meta property="og:title" content="Alexandria - CodePath's Section">
+    <meta property="og:description" content="Alexandria - CodePath's Section">
+    <meta property="og:url" content="/">
+    <title>Alexandria - CodePath's Section</title>
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <script src="https://kit.fontawesome.com/87d9f919f8.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <%= yield %>
+  <body id="top" class="font-sans text-gray-800 bg-gray-100 pb-16 bg-light-gray">
+    <%= render partial: "/shared/header" %>
+    <main id="main" class="w-full flex flex-col">
+      <div class="self-center w-full sm:w-2/3 sm:px:0">
+        <div class="font-light text-black text-lg">
+          <% unless flash["error"].blank? %>
+            <div class="flex flex-row-reverse w-full border p-4 font-bold rounded fade-out" style="background-color: #ffa822;">
+              <div class="w-1/16" onClick="removeFlash(this)">X</div>
+              <div class="w-full"><%= flash["error"] %></div>
+            </div>
+          <% end %>
+          <% unless flash["notice"].blank? %>
+            <div class="flex flex-row-reverse w-full border p-4 font-bold rounded fade-out" style="background-color: #1ac0c6">
+              <div class="w-1/16" onClick="removeFlash(this)">X</div>  
+              <div class="w-full"><%= flash["notice"] %></div>
+            </div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </main>
+    <%= render partial: "/shared/footer" %>
   </body>
+  <script>
+    function removeFlash(el) {
+      el.parentElement.style.display = "none";
+    }
+  </script>
+  <% flash[:error] = ''; flash[:notice] = '' %>
 </html>
