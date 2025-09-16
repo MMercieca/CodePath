@@ -121,4 +121,7 @@ To deploy:
 I'll put the files in S3 because I already have that set up.  ActiveStorage should manage keeping the files as private as we want.
 
 ## Database Schema
+<img width="947" height="790" alt="codepath-erd (1)" src="https://github.com/user-attachments/assets/591d4a62-1f8c-411d-9b0f-9ba21bc92df0" />
+
+
 
