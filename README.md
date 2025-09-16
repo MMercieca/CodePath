@@ -102,3 +102,4 @@ I'll put the files in S3 because I already have that set up.  ActiveStorage shou
 
 ## Database Schema
 
+<img width="947" height="651" alt="codepath-erd" src="https://github.com/user-attachments/assets/1d30ee71-107c-4bd3-812d-01a5217a440d" />
