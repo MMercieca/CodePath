@@ -1,0 +1,6 @@
+<% if current_user.teacher? && @lectures.empty? %>
+  <p>You have no lectures.  <a href="/lectures/new">Create one</a></p>
+<% end %> 
+<% @lectures.each do |lecture| %>
+  <p><%= lecture.name %></p>
+<% end %>

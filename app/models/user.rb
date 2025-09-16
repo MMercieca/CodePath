@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable
 
+  has_many :lectures, foreign_key: "user_id"
+
   def admin?
     group_id == 3
   end

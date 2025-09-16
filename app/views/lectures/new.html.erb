@@ -1,0 +1,23 @@
+<div class="w-full max-w-md mx-auto mt-8">
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <h2 class="text-2xl font-bold text-center text-gray-900 mb-6">New Lecture</h2>
+    <%= form_with url: lectures_url, method: :post, id: "new_lecture", locals: true do |form| %>
+      <div class="mb-4">
+        <%= form.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      </div>
+
+      <div class="mb-6">
+        <%= form.label :description, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.text_area :description, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32" %>
+      </div>
+
+      <div class="flex items-center justify-center">
+        <%= form.submit "Create Lecture", class: "bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out cursor-pointer" %>
+      </div>
+    <% end %>
+
+    
+  </div>
+  
+</div>
