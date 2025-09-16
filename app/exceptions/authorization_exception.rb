@@ -1,0 +1,1 @@
+class AuthorizationException < StandardError; end

@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ .link_button {
+  border: 10px solid red;
+}
