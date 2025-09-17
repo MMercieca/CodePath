@@ -40,6 +40,7 @@ class LecturesController < ApplicationController
     @lecture.name = lecture_params[:name]
     @lecture.description = lecture_params[:description]
     @lecture.save
+    flash[:notice] = "Saved"
 
     redirect_to "/lectures/#{@lecture.id}/edit"
   end
@@ -47,6 +48,7 @@ class LecturesController < ApplicationController
   def delete
     lecture = Lecture.find(params[:id])
     lecture.destroy
+    flash[:notice] = "Deleted"
 
     redirect_to "/dashboard"
   end

@@ -35,7 +35,8 @@ class AssignmentsController < ApplicationController
     @assignment.content = params[:content]
     @assignment.position = params[:position]
     @assignment.save
-  
+    flash[:notice] = "Saved"
+    
     redirect_to "/assignments/#{@assignment.id}/edit"
   end
 
@@ -43,6 +44,7 @@ class AssignmentsController < ApplicationController
     assignment = Assignment.find(params[:id])
     lecture = assignment.lecture
     assignment.destroy
+    flashp[:notice] = "Deleted"
 
     redirect_to "/lectures/#{lecture.id}"
   end
