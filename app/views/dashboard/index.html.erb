@@ -4,4 +4,6 @@
 <% @lectures.each do |lecture| %>
   <p><%= link_to lecture.name, lecture %></p>
 <% end %>
-<p><a href="/lectures/new" class="link-button green-button">Create New Lecture</a></p>
+<% if current_user.teacher? %>
+  <p><a href="/lectures/new" class="link-button green-button">Create New Lecture</a></p>
+<% end %>

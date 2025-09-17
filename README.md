@@ -143,6 +143,12 @@ I need at least two hours for the student experience. I'll probably finish out t
 
 ActiveStorage was kind to me and works locally. One quick test on Heroku with S3 and then it's on to student management.
 
+
+### Update 9
+
+OK, just a shade over two hours left for students to be in classes.  And then maybe version browsing or specs.
+
+
 ## Development Setup
 
 I'm swiping my [development setup Makefile](https://github.com/MMercieca/dev-setup/blob/main/rails/Makefile).

@@ -1,6 +1,6 @@
 class LecturesController < ApplicationController
   before_action :authenticate_user!
-  before_action :validate_write, only: [:create_assignment, :delete, :edit]
+  before_action :validate_write, only: [:create_assignment, :delete, :edit, :add_students]
   before_action :validate_view, only: [:show]
 
   def validate_write
@@ -22,6 +22,8 @@ class LecturesController < ApplicationController
   end
 
   def create
+    return unless current_user.teacher? || current_user.admin?
+
     @lecture = Lecture.create!(
       teacher: current_user,
       name: lecture_params[:name],
@@ -69,13 +71,46 @@ class LecturesController < ApplicationController
      redirect_to "/assignments/#{assignment.id}/edit"
   end
 
+  def add_students
+    @lecture = Lecture.find(params[:id])
+  end
+
+  def add_student(lecture, email)
+    student = User.find_by(email: email)
+
+    if !student
+      student = User.create!(email: email, group_id: 3, password: SecureRandom.uuid.to_s)
+      link = student.invite_link
+      LectureMailer.invite_new_student(student, link).deliver_now
+    end
+
+    LectureStudent.create!(lecture: lecture, user: student)
+  end
+
+  def show_add_students
+    @lecture = Lecture.find(params[:id])
+  end
+
+  def add_students
+    @lecture = Lecture.find(params[:id])
+    student_emails = lecture_params[:student_emails]
+
+    student_emails = student_emails.gsub(/,/, "\n")
+    student_emails.split("\n").each do |email|
+      add_student(@lecture, email.strip)
+    end
+
+    flash[:notice] = "Students added"
+    redirect_to "/lectures/#{@lecture.id}"
+  end
+
   def new
   end
 
   private
 
   def lecture_params
-    params.permit(:id, :name, :description)
+    params.permit(:id, :name, :description, :student_emails)
   end
 
 end

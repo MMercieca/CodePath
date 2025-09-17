@@ -6,7 +6,22 @@
 <% @lecture.assignments.each do |assignment| %>
   <p><%= link_to assignment.name, assignment %></p>
 <% end %>
-<p><a href="/lectures/<%= @lecture.id %>/assignments/new" class="link-button green-button">Create New Assignment</a>
+<% if @lecture.can_edit?(current_user) %>
+  <p><b>Students</b></p>
+
+  <% if @lecture.lecture_students.empty? %>
+    <p>This lecture has no students.</p>
+  <% else %>
+    <ul>
+      <% @lecture.lecture_students.each do |student| %>
+        <li><%= student.user.email %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="mb-4">
+    <a href="/lectures/<%= @lecture.id %>/add_students">Add Students</a>
+  </div>
+  <p><a href="/lectures/<%= @lecture.id %>/assignments/new" class="link-button green-button">Create New Assignment</a>
 &nbsp;<a href="/lectures/<%= @lecture.id %>/edit" class="link-button blue-button">Edit Lecture</a>
 
-</p>
+<% end %>
