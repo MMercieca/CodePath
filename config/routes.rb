@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post "/lectures/:id/delete", to: "lectures#delete"
   get "/lectures/:id/add_students", to: "lectures#show_add_students"
   post "/lectures/:id/add_students", to: "lectures#add_students"
+  get "/lectures/:id/students/:student_id/remove", to: "lectures#remove_student"
   
   resources :assignments do
     get   'assignment', to: 'assignments#show'

@@ -1,27 +1,38 @@
-<h2><%= @lecture.name %></h2>
-<p><%= @lecture.description %></p>
-<% if @lecture.assignments.empty? %>
-  <p>This lecture has no assignments.</p>
-<% end %>
-<% @lecture.assignments.each do |assignment| %>
-  <p><%= link_to assignment.name, assignment %></p>
-<% end %>
-<% if @lecture.can_edit?(current_user) %>
-  <p><b>Students</b></p>
+<div class="heading"><%= @lecture.name %></div>
+<div class="description">
+  <p><%= @lecture.description %></p>
+</div>
+<div class="assignments">
+  <div class="subheading">Assignments</div>
+  
+  <ul>
+    <% if @lecture.assignments.empty? %>
+      <li>This lecture has no assignments.</li>
+    <% end %>
 
-  <% if @lecture.lecture_students.empty? %>
-    <p>This lecture has no students.</p>
-  <% else %>
-    <ul>
+    <% @lecture.assignments.each do |assignment| %>
+      <li><%= link_to assignment.name, assignment %></li>
+    <% end %>
+  </ul>
+</div>
+<% if @lecture.can_edit?(current_user) %>
+  <div class="subheading">Students</div>
+  <ul>
+    <% if @lecture.lecture_students.empty? %>
+      <li>This lecture has no students.</li>
+    <% else %>
       <% @lecture.lecture_students.each do |student| %>
-        <li><%= student.user.email %></li>
+        <li><%= student.user.email %> (<a href="/lectures/<%= @lecture.id %>/students/<%= student.user.id %>/remove">Remove</a>)</li>
       <% end %>
-    </ul>
-  <% end %>
+    <% end %>
+  </ul>
+
   <div class="mb-4">
     <a href="/lectures/<%= @lecture.id %>/add_students">Add Students</a>
   </div>
   <p><a href="/lectures/<%= @lecture.id %>/assignments/new" class="link-button green-button">Create New Assignment</a>
-&nbsp;<a href="/lectures/<%= @lecture.id %>/edit" class="link-button blue-button">Edit Lecture</a>
+  &nbsp;
+  <a href="/lectures/<%= @lecture.id %>/edit" class="link-button blue-button">Edit Lecture</a>
+
 
 <% end %>

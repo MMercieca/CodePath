@@ -1,9 +1,13 @@
 <% if current_user.teacher? && @lectures.empty? %>
   <p>You have no lectures.</p>
-<% end %> 
-<% @lectures.each do |lecture| %>
-  <p><%= link_to lecture.name, lecture %></p>
+<% else %>
+  <div class="heading">Your Lectures</div>
 <% end %>
+<ul>
+  <% @lectures.each do |lecture| %>
+    <li><%= link_to lecture.name, lecture %></li>
+  <% end %>
+</ul>
 <% if current_user.teacher? %>
   <p><a href="/lectures/new" class="link-button green-button">Create New Lecture</a></p>
 <% end %>

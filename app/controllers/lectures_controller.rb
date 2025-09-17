@@ -1,6 +1,6 @@
 class LecturesController < ApplicationController
   before_action :authenticate_user!
-  before_action :validate_write, only: [:create_assignment, :delete, :edit, :add_students]
+  before_action :validate_write, only: [:create_assignment, :delete, :edit, :add_students, :remove_student]
   before_action :validate_view, only: [:show]
 
   def validate_write
@@ -75,6 +75,19 @@ class LecturesController < ApplicationController
     @lecture = Lecture.find(params[:id])
   end
 
+  def remove_student
+    @lecture = Lecture.find(params[:id])
+    lecture_student = LectureStudent.find_by(lecture_id: @lecture.id, user_id: params[:student_id])
+    
+    if !lecture_student
+      flash[:error] = "Could not find that student in this class"
+    else
+      lecture_student.destroy
+      flash[:notice] = "Student has been removed from class"
+    end
+    redirect_to "/lectures/#{@lecture.id}"
+  end
+
   def add_student(lecture, email)
     student = User.find_by(email: email)
 
@@ -110,7 +123,7 @@ class LecturesController < ApplicationController
   private
 
   def lecture_params
-    params.permit(:id, :name, :description, :student_emails)
+    params.permit(:id, :name, :description, :student_emails, :student_id)
   end
 
 end
