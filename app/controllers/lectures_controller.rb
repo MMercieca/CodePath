@@ -1,13 +1,19 @@
 class LecturesController < ApplicationController
   before_action :authenticate_user!
-  before_action :validate_access
-  
-  def validate_access
-    return if current_user.admin?
+  before_action :validate_write, only: [:create, :create_assignment]
+  before_action :validate_view, only: [:show]
+
+  def validate_write
     lecture = Lecture.find(params[:id])
+    return if lecture.can_edit?(current_user)
     
-    return if lecture.teacher.id == current_user.id
-    
+    raise AuthorizationException
+  end
+
+  def validate_view
+    lecture = Lecture.find(params[:id])
+    return if lecture.can_view?(current_user)
+
     raise AuthorizationException
   end
 
@@ -38,7 +44,7 @@ class LecturesController < ApplicationController
       position: position
      )
 
-     redirect_to "/assignments/#{assignment.id}"
+     redirect_to "/assignments/#{assignment.id}/edit"
   end
 
   def new

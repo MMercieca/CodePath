@@ -1,14 +1,23 @@
 class AssignmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :validate_access
+  before_action :validate_write, only: [:update, :edit]
+  befoce_action :validate_view, only: [:show]
   
-  def validate_access
-    return if current_user.admin?
+  def validate_write
     assignment = Assignment.find(params[:id])
-    
-    return if assignment.lecture.teacher.id == current_user.id
-    
+    return if assignment.can_edit?(current_user)
+
     raise AuthorizationException
+  end
+
+  def validate_view
+    assignment = Assignment.find(params[:id])
+    return if assignment.can_view?(current_user)
+
+    raise AuthorizationException
+  end
+
+  def index
   end
 
   def show

@@ -118,7 +118,9 @@ I also didn't mention email in my plan. For local email I can use the `letter-op
 
 The [Heroku incident yesterday](https://status.heroku.com/incidents/2873) lasted 19 hours.  It's resolved now and the app is up at [https://alexandria-ebf88031ff5d.herokuapp.com](https://alexandria-ebf88031ff5d.herokuapp.com)
 
+### Update 6
 
+After I can create and view lectures and assignments, I got to deleting them and that got scary.  So I took a small detour and implemented Paranoid for lectures and assignments. It will save me a bit of time in implementing confirm dialogs when time is short.
 
 ## Development Setup
 

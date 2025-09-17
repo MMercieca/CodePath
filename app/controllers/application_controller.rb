@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
   rescue_from AuthorizationException, with: :unauthorized
 
   def render_markdown(content)
+    return "" unless content
+
     Commonmarker.to_html(content, options: { parse: { smart: true } }).html_safe
   end
   helper_method :render_markdown
