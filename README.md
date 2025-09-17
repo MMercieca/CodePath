@@ -81,15 +81,17 @@ Beyond that, some prioritized features are:
   * Teachers can create assignments
   * Teachers can upload markdown to assignment content
   * Markdown displays as HTML
-* Hour 7
+* Hour 7 **DONE** --technically. The versions cannot be viewed or restored, but they're there.
   * Assignments can be versioned
-* Hour 8
+* Hour 8 **DONE** -- This was a big one!
   * Teachers can upload supporting files
   * Teachers can invite students
 * Hour 9
-  * Content moderation
+  * ~~Content moderation~~
 * Hour 10
   * Cleanup whatever I can
+  * I'm going to spend my last 45 minutes cleaning up some errant bugs and trying to get the display to be a little bit nicer.  I'm not a designer by any stretch, but there are some rough edges to smooth out.
+
 
 ### Update 1
 
@@ -148,6 +150,45 @@ ActiveStorage was kind to me and works locally. One quick test on Heroku with S3
 
 OK, just a shade over two hours left for students to be in classes.  And then maybe version browsing or specs.
 
+## Update 10
+
+OK, 45 minutes left and teachers can invite students to classes by email.  Students already in the system are added to the class and students not in the system receive an email with a link to sign up. It uses the Devise forgot password workflow behind the scenes. 
+
+## Update 11
+
+Well, time is up.  In the end we have:
+
+* The ability to create/update/delete lectures
+  * Lecture descriptions support markdown that is rendered as HTML.
+  * These _are_ versioned, but the versions aren't viewable.
+  * These are also soft deleted, but recovery has to be done through the rails console.
+* The ability to create/update/delete assignments
+  * Same as above. These are versioned and soft deleted, but the recovery has to be done through the rails console.
+  * Assignment content supports markdown that is rendered as HTML.
+* Assignments support basic files
+  * Locally files are stored on disc. In production they're stored on S3.
+* Students can be invited and removed from lectures.
+* Students have accounts where they can view the lectures they are assigned to.
+* An admin interface that supports promoting users to teachers or admins
+* The app is deployed with SSL
+  * Now that Heroku fixed their DNS issue.
+
+What I didn't get to:
+
+* There is no commenting.
+  * It was way faster for me to implement supporting files for assignments.  So I opted for that.  There wouldn't have been much point in the app if students couldn't view their assignments.
+* There are no metrics
+  * Again, metrics aren't very useful without a class list.
+* No editing interface
+  * I figure the teachers have to be creating the markdown somehow right now.  I bet there's a common WYSIWYG component for saving as markdown these days, but my experience with using that for HTML lead me to believe that I didn't have the time to make that robust enough for other people to use in the 10 hours I had available.  With HTML, the different browsers translate the same WYSIWYG content to different HTML. I don't know if it's the same for markdown and I didn't have time to research.
+* Content moderation and LLM summaries
+  * Moderation wasn't needed without comments
+  * LLM summaries would have been nice 
+* There are zero specs
+  * I'm actually at the point where specs would be useful.  Specs aren't very valuable if an app isn't being used, and without content and students there's not much that makes sense to test.  I needed the whole 10 hours to get to a spec place.
+  * This is somewhat mitigated by the continuous deployment approach I took.  I didn't just test everything on my machine, I was deploying to Heroku as soon as I could... so hour 6. Well I was deploying to Heroku at hour 1, but their DNS issue meant it didn't work.
+
+Congratulations if you made it this far. I hope I get to expand on this in my presentation.
 
 ## Development Setup
 
