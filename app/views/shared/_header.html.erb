@@ -3,6 +3,9 @@
     <div>
       <a href="/" class="no-underline visited:text-white text-white text-lg font-semibold mr-5">Alexandria</a>
       <% if current_user.present? %>
+        <% if current_user.admin? %>
+          <a href="/admin" class="header-link">Admin</a>
+        <% end %>
         <a href="/dashboard" class="header-link">Dashboard</a>
         <a href="/users/edit" class="header-link">Profile</a>
       <% end %>

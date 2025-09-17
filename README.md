@@ -38,11 +38,13 @@ Beyond that, some prioritized features are:
   * That would negate the need for student accounts if all of the files are publically available. I'm going to assume this means "Students can access the files via a link"
   * It's also easier to track metrics this way.
 * Do teachers need to be able to edit files in this interface?
-  * I'm going to call that out of scope.  Teachers are creating the files in markdown now, so I'm going to assume they have some editing process.
+  * I'm going to call that out of scope for now.  Teachers are creating the files in markdown now, so I'm going to assume they have some editing process.
 * What kind of supporting files are they uploading?
   * To keep things simple, I'm going to assume they're documents for now.  Videos and other large files may be added later.
 * Can teachers be students?
   * We'll let teachers be in a class, but keep the teacher group.  That sounds like something we'll need unit tests for.
+* What devices do I need to support?
+  * I doubt teachers are uploading markdown from their phone, so I'll focus on the desktop browser first.  Tailwind is fairly responsive out of the box, but with 10 hours I'm not going to worry about this one overmuch.
 
 ## Plan
 
@@ -61,8 +63,8 @@ Beyond that, some prioritized features are:
   * This was taken up with Hour 2 stuff.
 * Hour 4 **DONE**
   * Admin interface for making teachers and other admins
-  * Teachers can create a class
-* Hour 5
+  * Teachers can create a lecture/class
+* Hour 5 **DONE**
   * First style pass
 * **End of day 1**
 * Hour 6
@@ -91,11 +93,21 @@ Fortunately, I have some hours at the end which are unallocated.  So I'll update
 
 ### Update 3
 
-Heroku is still investigating their DNS issue.  I expect they'll have it fixed tomorrow.  It's both annoying and increadably funny that they're having an issue with creating new apps _today_ and _today_ was the day I set aside for starting this project.
+Heroku is still investigating their DNS issue.  I expect they'll have it fixed tomorrow.  It's both annoying and incredibly funny that they're having an issue with creating new apps _today_ and _today_ was the day I set aside for starting this project.
 
 I have user management working through ActiveAdmin. I'm thinking that will also be a back door for admins to manage teachers' lectures.  When we get to that.
 
 There's still not a ton that makes sense to spec out, which makes the timeline look a bit iffy. I'll finish out today doing a style pass.
+
+### Update 4
+
+The decision to use Heroku was supposed to make deployment easy. I had a few deployments that worked, but the last one of the day failed.  Oh well, I'll five them the night to fix it before I start worrying.  I won't panic until they haven't fixed it by hours 9 or 10.
+
+I used up my Gemini quota today. I didn't expect to do that as I'm paying for an account and making a relatively small app.  I originally wanted to get more than user management done today, but diving straight in to file uploads tomorrow isn't terrible.
+
+I didn't explicitly say anything about sanitization in my plan.  I'm planning on using Github's markdown to HTML gem for rendering. It looks straightforward enough and has sanitization built in. If this went beyond a prototype I'd add guards.  I still may add demo LLM based guards, but we have to get markdown displaying as HTML and be able to invite classes first.
+
+I also didn't mention email in my plan. For local email I can use the `letter-opener` gem.  I have an account I can send email with and I may hook that up. If I limit sending of email to only teachers and admins I can avoid the security issues somewhat.
 
 ## Development Setup
 
