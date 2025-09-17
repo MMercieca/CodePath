@@ -74,6 +74,6 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.permit(:id, :position, :content, :name, :files)
+    params.permit(:id, :position, :content, :name, :supporting_files)
   end
 end

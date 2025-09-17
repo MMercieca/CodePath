@@ -1,6 +1,6 @@
 <div class="heading"><%= @lecture.name %></div>
 <div class="description">
-  <p><%= @lecture.description %></p>
+  <%= render_markdown(@lecture.description) %>
 </div>
 <div class="assignments">
   <div class="subheading">Assignments</div>
