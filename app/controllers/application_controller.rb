@@ -9,11 +9,9 @@ class ApplicationController < ActionController::Base
     redirect_to "/"
   end
 
-  # def current_admin_user
-  #   return current_user if current_user.admin?
-
-  #   nil
-  # end
+  def after_sign_in_path_for(user)
+    "/dashboard"
+  end
 
   def authenticate_admin_user!
     authenticate_user!

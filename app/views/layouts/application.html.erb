@@ -25,13 +25,13 @@
       <div class="self-center w-full sm:w-2/3 sm:px:0">
         <div class="font-light text-black text-lg">
           <% unless flash["error"].blank? %>
-            <div class="flex flex-row-reverse w-full border p-4 font-bold rounded fade-out" style="background-color: #ffa822;">
+            <div id='flash-error' style="position: absolute; top: 75px;background-color: #ffa822;width:70%" class="flex flex-row-reverse w-full border p-4 font-bold rounded fade-out">
               <div class="w-1/16" onClick="removeFlash(this)">X</div>
               <div class="w-full"><%= flash["error"] %></div>
             </div>
           <% end %>
           <% unless flash["notice"].blank? %>
-            <div class="flex flex-row-reverse w-full border p-4 font-bold rounded fade-out" style="background-color: #1ac0c6">
+            <div id='flash-notice' style="position: absolute; top: 75px;background-color: #1ac0c6;width: 70%;" class="flash-message flex flex-row-reverse w-full border p-4 font-bold rounded fade-out">
               <div class="w-1/16" onClick="removeFlash(this)">X</div>  
               <div class="w-full"><%= flash["notice"] %></div>
             </div>
@@ -46,6 +46,17 @@
     function removeFlash(el) {
       el.parentElement.style.display = "none";
     }
+
+    function timeoutFlash() {
+      if (document.getElementById('flash-error') != undefined) {
+        document.getElementById('flash-error').style.display = "none";
+      }
+      if (document.getElementById('flash-notice') != undefined) {
+        document.getElementById('flash-notice').style.display = "none";
+      }
+    }
+
+    window.setTimeout(timeoutFlash, 3000);
   </script>
   <% flash[:error] = ''; flash[:notice] = '' %>
 </html>

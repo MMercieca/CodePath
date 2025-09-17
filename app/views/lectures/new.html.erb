@@ -13,7 +13,8 @@
       </div>
 
       <div class="flex items-center justify-center">
-        <%= form.submit "Create Lecture", class: "link-button green-button" %>
+        <%= form.submit "Create Lecture", style: "display: none;", id: 'create-lecture' %>
+        <a href="javascript:document.getElementById('create-lecture').click()" class="link-button green-button">Create Lecture</a>
       </div>
     <% end %>
 
