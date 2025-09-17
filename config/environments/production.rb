@@ -102,5 +102,17 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-    config.action_mailer.default_url_options = { host: "alexandria.herokuapp.com", port: 443 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: ENV("HOST") }
+  if ENV["SENDGRID_API_KEY"].present?
+    config.action_mailer.smtp_settings = {
+      address: "smtp.sendgrid.net",
+      port: 587,
+      authentication: :plain,
+      user_name: "apikey",
+      password: ENV["SENDGRID_API_KEY"],
+      domain: "heroku.com",
+      enable_starttls_auto: true
+    }
+  end
 end
