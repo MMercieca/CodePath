@@ -6,4 +6,7 @@
 <% @lecture.assignments.each do |assignment| %>
   <p><%= link_to assignment.name, assignment %></p>
 <% end %>
-<p><a href="/lectures/<%= @lecture.id %>/assignments/new" class="link-button green-button">Create New Assignment</a></p>
+<p><a href="/lectures/<%= @lecture.id %>/assignments/new" class="link-button green-button">Create New Assignment</a>
+&nbsp;<a href="/lectures/<%= @lecture.id %>/edit" class="link-button blue-button">Edit Lecture</a>
+
+</p>

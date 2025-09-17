@@ -1,6 +1,6 @@
 class LecturesController < ApplicationController
   before_action :authenticate_user!
-  before_action :validate_write, only: [:create, :create_assignment, :delete]
+  before_action :validate_write, only: [:create_assignment, :delete, :edit]
   before_action :validate_view, only: [:show]
 
   def validate_write
@@ -31,6 +31,19 @@ class LecturesController < ApplicationController
     redirect_to "/lectures/#{@lecture.id}"
   end
 
+  def edit
+    @lecture = Lecture.find(params[:id])
+  end
+
+  def update
+    @lecture = Lecture.find(params[:id])
+    @lecture.name = lecture_params[:name]
+    @lecture.description = lecture_params[:description]
+    @lecture.save
+
+    redirect_to "/lectures/#{@lecture.id}/edit"
+  end
+
   def delete
     lecture = Lecture.find(params[:id])
     lecture.destroy
@@ -42,7 +55,7 @@ class LecturesController < ApplicationController
     @lecture = Lecture.find(params[:id])
   end
 
-    def create_assignment
+  def create_assignment
     lecture = Lecture.find(params[:id])
     position = lecture.assignments&.pluck(:position)&.max
     position = position || 1
