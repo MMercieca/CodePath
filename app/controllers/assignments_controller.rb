@@ -66,7 +66,7 @@ class AssignmentsController < ApplicationController
     assignment = Assignment.find(params[:id])
     lecture = assignment.lecture
     assignment.destroy
-    flashp[:notice] = "Deleted"
+    flash[:notice] = "Deleted"
 
     redirect_to "/lectures/#{lecture.id}"
   end
