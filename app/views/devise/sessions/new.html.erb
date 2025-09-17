@@ -18,9 +18,9 @@
         <%= f.password_field :password, autocomplete: "new-password", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" %>
       </div>
 
-
       <div class="flex items-center justify-center">
-        <%= f.submit "Sign in", class: "bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out" %>
+        <%= f.submit "Sign in", id: 'sign-in-button', style: "display: none;" %>
+        <a href="javascript:document.getElementById('sign-in-button').click();" class="link-button green-button">Sign in</a>
       </div>
     <% end %>
   </div>

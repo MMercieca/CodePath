@@ -24,7 +24,8 @@
       </div>
 
       <div class="flex items-center justify-center">
-        <%= f.submit "Sign up", class: "bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out" %>
+        <%= f.submit "Sign up", id:'sign-up-button', style: "display: none;" %>
+        <a href="javascript:document.getElementById('sign-up-button').click();" class="link-button green-button">Sign Up</a>
       </div>
     <% end %>
   </div>
