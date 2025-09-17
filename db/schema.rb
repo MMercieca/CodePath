@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_16_201114) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_17_141052) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -38,6 +38,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_16_201114) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "lecture_id", null: false
+    t.string "name"
+    t.text "content"
+    t.integer "position", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lecture_id"], name: "index_assignments_on_lecture_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -68,5 +78,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_16_201114) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "assignments", "lectures"
   add_foreign_key "lectures", "users"
 end

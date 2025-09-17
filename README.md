@@ -10,6 +10,8 @@ Some of my philosophy:
 
 I've invited you to this repository before it is finished.  I believe in opening pull requests at the beginning of a feature build so feedback can be gathered as soon as possible.  For one thing, feedback is easier to take the earlier in development a feature or project is in.  For another, getting feedback at the end which requires a major change is always a bummer. I open PRs as soon as I can to encourage the former and avoid the latter as much as possible.
 
+I would have invited all of you when I started, but 
+
 ## Requirements
 
 The MVP seems to be:
@@ -35,7 +37,7 @@ Beyond that, some prioritized features are:
 * How private are these files?
   * Students would need accounts to only view files in their classes.  That's probably not too hard? I'll try that.
 * "Each file should be accessible on the public web via a unique URL"
-  * That would negate the need for student accounts if all of the files are publically available. I'm going to assume this means "Students can access the files via a link"
+  * That would negate the need for student accounts if all of the files are publicly available. I'm going to assume this means "Students can access the files via a link"
   * It's also easier to track metrics this way.
 * Do teachers need to be able to edit files in this interface?
   * I'm going to call that out of scope for now.  Teachers are creating the files in markdown now, so I'm going to assume they have some editing process.
@@ -68,14 +70,17 @@ Beyond that, some prioritized features are:
   * First style pass
 * **End of day 1**
 * Hour 6
-  * Teachers can upload markdown
+  * Teachers can create assignments
+  * Teachers can upload markdown to assignment content
   * Markdown displays as HTML
 * Hour 7
+  * Teachers can invite students
+  * Assignments can be versioned
+* Hour 8
   * LectureController specs
   * Teachers can upload supporting files
-* Hour 8
-  * Content moderation
 * Hour 9
+  * Content moderation
 * Hour 10
   * Cleanup whatever I can
 
@@ -109,6 +114,12 @@ I didn't explicitly say anything about sanitization in my plan.  I'm planning on
 
 I also didn't mention email in my plan. For local email I can use the `letter-opener` gem.  I have an account I can send email with and I may hook that up. If I limit sending of email to only teachers and admins I can avoid the security issues somewhat.
 
+### Update 5
+
+The [Heroku incident yesterday](https://status.heroku.com/incidents/2873) lasted 19 hours.  It's resolved now and the app is up at [https://alexandria-ebf88031ff5d.herokuapp.com](https://alexandria-ebf88031ff5d.herokuapp.com)
+
+
+
 ## Development Setup
 
 I'm swiping my [development setup Makefile](https://github.com/MMercieca/dev-setup/blob/main/rails/Makefile).
@@ -124,6 +135,24 @@ To install missing dependencies:
 
 ```
 make install_development
+```
+
+Once the dependencies are installed, the app can be prepared with with:
+
+```
+bundle install
+bundle exec rails database:create
+bundle exec rails database:migrate
+bundle exec rails database:seed
+
+```
+
+(Yeah, I decided to seed the users. Development didn't make sense otherwise.)
+
+Once done, the app can be started with:
+
+```
+bin/dev
 ```
 
 ## Deployment

@@ -1,0 +1,9 @@
+<h2><%= @assignment.name %></h2>
+<p><%= render_markdown(@assignment.content) %></p>
+
+<p>
+  <% if current_user.id == @assignment.lecture.user_id %>
+    <a href="/assignments/<%= @assignment.id %>/edit" class="link-button green-button">Edit Assignment</a>
+  <% end %>
+  <a href="/lectures/<%= @assignment.lecture_id %>" class="link-button blue-button">Back to Lecture</a>
+</p>

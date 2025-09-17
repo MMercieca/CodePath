@@ -1,0 +1,26 @@
+<div class="w-full mx-auto mt-8">
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <h2 class="text-2xl font-bold text-center text-gray-900 mb-6">Edit Assignment</h2>
+    <%= form_with url: "/assignments/#{@assignment.id}/update", method: :post, id: "edit_assignment", locals: true do |form| %>
+      <div class="mb-4">
+        <%= form.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.text_field :name, value: @assignment.name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      </div>
+
+      <div class="mb-6">
+        <%= form.label :content, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.text_area :content, value: @assignment.content, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32" %>
+      </div>
+
+      <div class="flex items-center justify-center">
+        <%= form.submit "Create Assignment", style: "display: none;", id: 'save-assignment' %>
+        <a href="javascript:document.getElementById('save-assignment').click()" class="link-button green-button">Save Assignment</a>
+        &nbsp;
+        <a href="/assignments/<%= @assignment.id %>" class="link-button blue-button">View Assignment</a>
+      </div>
+    <% end %>
+
+    
+  </div>
+  
+</div>

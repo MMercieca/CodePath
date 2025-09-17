@@ -10,5 +10,14 @@ Rails.application.routes.draw do
     delete 'lectures', to: 'lectures#delete'
     get   'lectures', to: 'lectures#show'
   end
+
+  resources :assignments do
+    get   'assignment', to: 'assignments#show'
+  end
+
+  post "/assignments/:id/update", to: "assignments#update"
+  get "/assignments/:id/edit", to: "assignments#edit"
+  get "/lectures/:id/assignments/new", to: "lectures#create_assignment"
+
   root "home#index"
 end
