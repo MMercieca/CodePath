@@ -1,6 +1,14 @@
-<h2><%= @assignment.name %></h2>
+<h1><%= @assignment.name %></h1>
 <p><%= render_markdown(@assignment.content) %></p>
 
+<% if @assignment.supporting_documents.present? %>
+  <h3>Supporting Documents</h3>
+  <ul>
+    <% @assignment.supporting_documents.each do |file| %>
+      <%= link_to file.filename, rails_blob_path(file, disposition: "attachment"), class: "text-blue-500 hover:underline" %>
+    <% end %>
+  </ul>
+<% end %>
 <p>
   <% if current_user.id == @assignment.lecture.user_id %>
     <a href="/assignments/<%= @assignment.id %>/edit" class="link-button green-button">Edit Assignment</a>

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   post "/assignments/:id/update", to: "assignments#update"
   post "/assignments/:id/delete", to: "assignments#delete"
+  get "/assignments/:id/supporting_documents/:file_id/delete", to: "assignments#delete_supporting_document"
   get "/assignments/:id/edit", to: "assignments#edit"
   get "/lectures/:id/assignments/new", to: "lectures#create_assignment"
 

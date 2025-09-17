@@ -34,10 +34,32 @@ class AssignmentsController < ApplicationController
     @assignment.name = params[:name]
     @assignment.content = params[:content]
     @assignment.position = params[:position]
+    
+    if params[:supporting_documents].present?
+      params[:supporting_documents].each do |f|
+        @assignment.supporting_documents.attach(f)
+      end
+    end
     @assignment.save
     flash[:notice] = "Saved"
-    
+
     redirect_to "/assignments/#{@assignment.id}/edit"
+  end
+
+  def delete_supporting_document
+    assignment = Assignment.find(params[:id])
+    doc = assignment.supporting_documents.find(params[:file_id])
+
+    if doc.nil?
+      flash[:error] = "Document not found"
+      return redirect_to "/assignments/#{assignment.id}"
+    end
+
+    doc.destroy
+    flash[:notice] = "Deleted"
+
+    redirect_to "/assignments/#{assignment.id}/edit"
+
   end
 
   def delete
@@ -52,6 +74,6 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.permit(:id, :position, :content, :name)
+    params.permit(:id, :position, :content, :name, :files)
   end
 end

@@ -82,11 +82,10 @@ Beyond that, some prioritized features are:
   * Teachers can upload markdown to assignment content
   * Markdown displays as HTML
 * Hour 7
-  * Teachers can invite students
   * Assignments can be versioned
 * Hour 8
-  * LectureController specs
   * Teachers can upload supporting files
+  * Teachers can invite students
 * Hour 9
   * Content moderation
 * Hour 10
@@ -129,6 +128,20 @@ The [Heroku incident yesterday](https://status.heroku.com/incidents/2873) lasted
 ### Update 6
 
 After I can create and view lectures and assignments, I got to deleting them and that got scary.  So I took a small detour and implemented Paranoid for lectures and assignments. It will save me a bit of time in implementing confirm dialogs when time is short.
+
+### Update 7
+
+I have a little less than 3 hours left.  I absolutely need to be able to have students view the lectures and assignments, otherwise the site is pretty useless. 
+
+I would also really like to have generic file attachments to assignments.  
+
+I've already added versions with the `paper_trail` gem.
+
+I need at least two hours for the student experience. I'll probably finish out the app writing that.  So I'm going to time box file uploads to getting as much done as I can in 30 minutes or so.
+
+### Update 8
+
+ActiveStorage was kind to me and works locally. One quick test on Heroku with S3 and then it's on to student management.
 
 ## Development Setup
 
