@@ -1,6 +1,8 @@
+<div style="mt-5"></div>
 <% if current_user.teacher? && @lectures.empty? %>
-  <p>You have no lectures.  <a href="/lectures/new">Create one</a></p>
+  <p>You have no lectures.</p>
 <% end %> 
 <% @lectures.each do |lecture| %>
   <p><%= lecture.name %></p>
 <% end %>
+<p><a href="/lectures/new">Create New Lecture</a></p>
