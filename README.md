@@ -6,11 +6,13 @@ Some of my philosophy:
 
 1. Get it working, then make it pretty.
 
+This is deployed at [https://alexandria-ebf88031ff5d.herokuapp.com](https://alexandria-ebf88031ff5d.herokuapp.com)
+
 2. Get Feedback early
 
-I've invited you to this repository before it is finished.  I believe in opening pull requests at the beginning of a feature build so feedback can be gathered as soon as possible.  For one thing, feedback is easier to take the earlier in development a feature or project is in.  For another, getting feedback at the end which requires a major change is always a bummer. I open PRs as soon as I can to encourage the former and avoid the latter as much as possible.
+I've invited you to this repository before it is finished.  I don't expect any early feedback. I wanted to demonstrate part of my development philosophy: get feedback early.  I believe in opening pull requests at the beginning of a feature build so feedback can be gathered as soon as possible.  
 
-I would have invited all of you when I started, but 
+For one thing, feedback is easier to take the earlier in development a feature or project is in.  For another, getting feedback at the end which requires a major change is always a bummer. I open PRs as soon as I can to encourage the former and avoid the latter as much as possible.
 
 ## Requirements
 
@@ -69,7 +71,7 @@ Beyond that, some prioritized features are:
 * Hour 5 **DONE**
   * First style pass
 * **End of day 1**
-* Hour 6
+* Hour 6 **DONE** --even a bit early
   * Teachers can create assignments
   * Teachers can upload markdown to assignment content
   * Markdown displays as HTML

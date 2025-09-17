@@ -1,7 +1,7 @@
 class AssignmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :validate_write, only: [:update, :edit]
-  befoce_action :validate_view, only: [:show]
+  before_action :validate_write, only: [:update, :edit, :delete]
+  before_action :validate_view, only: [:show]
   
   def validate_write
     assignment = Assignment.find(params[:id])
@@ -37,6 +37,14 @@ class AssignmentsController < ApplicationController
     @assignment.save
   
     redirect_to "/assignments/#{@assignment.id}/edit"
+  end
+
+  def delete
+    assignment = Assignment.find(params[:id])
+    lecture = assignment.lecture
+    assignment.destroy
+
+    redirect_to "/lectures/#{lecture.id}"
   end
 
   private

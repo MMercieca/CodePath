@@ -18,9 +18,15 @@
         &nbsp;
         <a href="/assignments/<%= @assignment.id %>" class="link-button blue-button">View Assignment</a>
       </div>
+      
     <% end %>
 
-    
+    <div class="flex items-center justify-center mt-5">
+      <form action="/assignments/<%= @assignment.id %>/delete" method="post">
+        <button type="submit" id="delete-assignment" style="display: none;"></button>
+        <a href="javascript:document.getElementById('delete-assignment').click()" class="link-button red-button">Delete Assignment</a>
+      </form>
+    </div>
+
   </div>
-  
 </div>
