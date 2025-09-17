@@ -1,6 +1,6 @@
 class LecturesController < ApplicationController
   before_action :authenticate_user!
-  before_action :validate_write, only: [:create, :create_assignment]
+  before_action :validate_write, only: [:create, :create_assignment, :delete]
   before_action :validate_view, only: [:show]
 
   def validate_write
@@ -29,6 +29,13 @@ class LecturesController < ApplicationController
     )
 
     redirect_to "/lectures/#{@lecture.id}"
+  end
+
+  def delete
+    lecture = Lecture.find(params[:id])
+    lecture.destroy
+
+    redirect_to "/dashboard"
   end
 
   def show

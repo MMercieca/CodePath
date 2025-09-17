@@ -14,6 +14,12 @@ I've invited you to this repository before it is finished.  I don't expect any e
 
 For one thing, feedback is easier to take the earlier in development a feature or project is in.  For another, getting feedback at the end which requires a major change is always a bummer. I open PRs as soon as I can to encourage the former and avoid the latter as much as possible.
 
+Again, I'm doing this as a demonstration **only**.
+
+3. Small commits and a good commit story
+
+I do try to keep my commit history clean. That does mean rebasing on occasion. I have to be careful if the whole team isn't doing that, but a senior dev early in my career pointed out how it makes reviewing PRs easier.  I'm doing my best here in the time I have.
+
 ## Requirements
 
 The MVP seems to be:
