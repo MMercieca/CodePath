@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: code_path_production
-  username: code_path
+  host: alexandria-472515:us-east5:alexandriadb
+  database: <%= ENV["CODE_PATH_DATABASE_NAME"] %>
+  username: <%= ENV["CODE_PATH_DATABASE_USERNAME"] %>
   password: <%= ENV["CODE_PATH_DATABASE_PASSWORD"] %>
