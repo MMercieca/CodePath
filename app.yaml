@@ -1,0 +1,6 @@
+entrypoint: bundle exec rails s --port $PORT
+env: flex
+runtime: ruby
+
+runtime_config:
+  operating_system: "ubuntu22"
